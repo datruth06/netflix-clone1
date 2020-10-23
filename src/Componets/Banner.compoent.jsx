@@ -5,7 +5,7 @@ import { useState } from 'react';
 import './Banner.style.css';
 import axios from '../axios';
 import requests from '../request';
-import {base_url} from '../Componets/Rows.Componet';
+//import {base_url} from '../Componets/Rows.Componet';
 
 
 function Banner ()  {
@@ -14,7 +14,9 @@ function Banner ()  {
     useEffect(() => {
         async function fetchData(){
             const request = await axios.get(requests.fetchNetflixOriginals);
-            setMovie(request.data.results[
+            setMovie(
+                
+                request.data.results[
                 Math.floor(Math.random() * request.data.results.length - 1)
             ]);
 
@@ -22,7 +24,7 @@ function Banner ()  {
 
 
         }
-        fetchData()
+        fetchData();
 
     }, []);
 
@@ -35,7 +37,8 @@ function Banner ()  {
     return(
     <header className='banner'
     style = {{
-        backgroundImage: `url(${base_url}${movie?.backdrop_path})`,
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        //backgroundImage: `url(${base_url}${movie?.backdrop_path})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center'
         
