@@ -40,6 +40,7 @@ function Row({title, fetchUrl, isLargeRow}){
             movieTrailer(movie?.name || movie?.title || movie?.original_name || movie.alt || "")
             .then((url) => {
                 //https://www.youtube.com/watch?v=QH3Fx41Jpl4
+                
                const urlParams = new URLSearchParams (new URL(url).search);
                setTrailerUrl (urlParams.get("v"));
 
